@@ -1,0 +1,41 @@
+marquee {
+    background-color: rgb(0, 0, 134);
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.btn-blue {
+    background-color: rgb(0, 0, 163);
+    border-radius: 12%;
+    border: 1px solid rgb(0, 0, 163);
+    color: white;
+    }
+
+.navbar-1 {
+    background-color: black;
+    width: 100%;
+}
+
+.img-size {
+    width: 400px;
+    height: 75vh;
+}
+
+td {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+thead {
+    background-color: blue;
+    color: white;
+}
+
+th {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

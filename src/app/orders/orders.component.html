@@ -1,0 +1,89 @@
+<div>
+  <div>
+    <nav class="navbar-1">
+      <app-banner></app-banner>
+    </nav>
+  </div>
+  <marquee>5% DISCOUNT ON ALL EXPRESSO BAR DRINKS!!! BUY NOW!</marquee>
+  <div class="container">
+    <div style="float: left">
+      <app-menu></app-menu>
+    </div>
+    <div class="mt-5 form-group" style="float: right">
+      <form #addOrderForm="ngForm" (ngSubmit)="addOrder(addOrderForm)">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Order Item</th>
+              <th>Price</th>
+              <th>On 5% Promo?</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody class="tbody">
+            <tr>
+              <td><input class="form-control" type="text" name="orderName" id="orderName" [(ngModel)]="order.orderName"
+                  required></td>
+              <td><input type="text" name="price" id="price" class="form-control" [(ngModel)]="order.price" required>
+              </td>
+              <td><input type="checkbox" class="square-radio" name="discounted" id="ordDiscounted"
+                  [(ngModel)]="order.discounted" checked="discounted"></td>
+              <td>
+                <button class="btn btn-blue" [disabled]="!addOrderForm.valid" id="addOrder">Place Order</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+      <p>Attending Clerk: Johnny</p>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Order Item</th>
+            <th>Price</th>
+            <th>On 5% Promo?</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody class="tbody">
+          <tr *ngFor="let order of orderDetails">
+            <td>{{ order.orderName }}</td>
+            <td>{{ order.price }}</td>
+            <td><input type="checkbox" name="discounted" id="discounted" disabled *ngIf="order.discounted"
+                [checked]="order.discounted">
+              <input type="checkbox" name="discounted" id="discounted" disabled *ngIf="!order.discounted">
+            </td>
+            <td>
+              <button class="btn btn-primary" (click)="update(order)" id="update">Update</button> |
+              <button class="btn btn-primary" (click)="deleteOrder(order.id)" id="deleteOrder">Delete</button>
+            </td>
+          </tr>
+          <tr *ngIf="updateMode">
+            <td><input class="form-control" type="text" name="orderName" id="orderName1" [(ngModel)]="upOrder.orderName"
+                required>
+            </td>
+            <td><input class="form-control" type="text" name="price" id="price1" [(ngModel)]="upOrder.price" required>
+            </td>
+            <td>
+              <input type="checkbox" name="discounted1" [(ngModel)]="upOrder.discounted" [checked]="upOrder.discounted"
+                id="upDiscount" #discounted="ngModel">
+            </td>
+            <td>
+              <button class="btn btn-primary" id="updateOrder" (click)="updateOrder()">Update</button>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4">
+              <p>Total Regular Bill: {{totalReg}}</p>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4">
+              <p>Total Discounted Bill: {{totalDisc}}</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
